@@ -1,0 +1,34 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: fullstack-backend
+  datasource:
+    url: jdbc:postgresql://localhost:5432/fullstackdb
+    username: fsuser
+    password: fspass
+    hikari:
+      maximum-pool-size: 10
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+app:
+  jwt:
+    secret: mySecretKeyForJwtSigningMustBeAtLeast256BitsLong1234
+    expiration: 86400000   # 24 hours in ms
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+logging:
+  level:
+    com.app: DEBUG
